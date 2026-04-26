@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cyber Hygiene Awareness</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+header {
+    background: #0a3d62;
+    color: white;
+    padding: 15px;
+}
+
+nav a {
+    margin: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+section {
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    margin: 15px auto;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+button {
+    padding: 10px;
+    background: #0a3d62;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input {
+    padding: 10px;
+    width: 60%;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Cyber Hygiene Awareness</h1>
+    <nav>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('tips')">Tips</a>
+        <a href="#" onclick="showPage('threats')">Threats</a>
+        <a href="#" onclick="showPage('ai')">AI Generator</a>
+        <a href="#" onclick="showPage('quiz')">Quiz</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<section id="home">
+    <div class="card">
+        <h2>Welcome</h2>
+        <p>Cyber hygiene means protecting your digital life from threats.</p>
+    </div>
+</section>
+
+<!-- TIPS -->
+<section id="tips" class="hidden">
+    <div class="card">
+        <h2>Cyber Safety Tips</h2>
+        <ul>
+            <li>Use strong passwords</li>
+            <li>Enable 2-Factor Authentication</li>
+            <li>Do not click unknown links</li>
+            <li>Keep software updated</li>
+        </ul>
+    </div>
+</section>
+
+<!-- THREATS -->
+<section id="threats" class="hidden">
+    <div class="card">
+        <h2>Common Cyber Threats</h2>
+        <ul>
+            <li>Phishing</li>
+            <li>Malware</li>
+            <li>Ransomware</li>
+            <li>Data Breaches</li>
+        </ul>
+    </div>
+</section>
+
+<!-- AI GENERATOR -->
+<section id="ai" class="hidden">
+    <div class="card">
+        <h2>AI Content Generator</h2>
+        <input type="text" id="topic" placeholder="Enter topic (e.g. passwords)">
+        <br><br>
+        <button onclick="generateContent()">Generate</button>
+        <p id="output"></p>
+    </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="hidden">
+    <div class="card">
+        <h2>Cyber Awareness Quiz</h2>
+        <p>Is it safe to share OTP?</p>
+        <button onclick="checkAnswer(false)">Yes</button>
+        <button onclick="checkAnswer(true)">No</button>
+        <p id="quizResult"></p>
+    </div>
+</section>
+
+<script>
+// Navigation
+function showPage(pageId) {
+    let sections = document.querySelectorAll("section");
+    sections.forEach(sec => sec.classList.add("hidden"));
+
+    document.getElementById(pageId).classList.remove("hidden");
+}
+
+// AI Generator
+function generateContent() {
+    let topic = document.getElementById("topic").value.toLowerCase();
+    let output = document.getElementById("output");
+
+    if(topic === "") {
+        output.innerText = "Please enter a topic!";
+        return;
+    }
+
+    if(topic.includes("password")) {
+        output.innerText = "Use strong passwords with letters, numbers, and symbols.";
+    } 
+    else if(topic.includes("phishing")) {
+        output.innerText = "Do not click suspicious links or emails.";
+    } 
+    else if(topic.includes("wifi")) {
+        output.innerText = "Avoid using public Wi-Fi for sensitive transactions.";
+    } 
+    else {
+        output.innerText = "Stay alert online and protect your personal data.";
+    }
+}
+
+// Quiz
+function checkAnswer(correct) {
+    let result = document.getElementById("quizResult");
+    if(correct) {
+        result.innerText = "Correct! Never share OTP.";
+    } else {
+        result.innerText = "Wrong! OTP should never be shared.";
+    }
+}
+</script>
+
+</body>
+</html>
